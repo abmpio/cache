@@ -7,7 +7,7 @@ import (
 
 	"github.com/abmpio/abmp/pkg/log"
 	"github.com/abmpio/app"
-	"github.com/abmpio/app/web"
+	"github.com/abmpio/app/cli"
 	"github.com/abmpio/configurationx"
 	"go.uber.org/zap"
 
@@ -16,10 +16,10 @@ import (
 )
 
 func init() {
-	web.ConfigureService(serviceConfigurator)
+	cli.ConfigureService(serviceConfigurator)
 }
 
-func serviceConfigurator(wa web.WebApplication) {
+func serviceConfigurator(cliApp cli.CliApplication) {
 	redisClient := initRedis()
 
 	redisxOption := redisx.NewRedisOptions(redisClient)
