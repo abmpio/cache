@@ -16,7 +16,7 @@ import (
 )
 
 func init() {
-	log.Logger.Info("cache.redis starter init")
+	fmt.Println("cache.redis starter init")
 
 	cli.ConfigureService(serviceConfigurator)
 }
