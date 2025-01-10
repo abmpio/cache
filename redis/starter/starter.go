@@ -16,6 +16,8 @@ import (
 )
 
 func init() {
+	log.Logger.Info("cache.redis starter init")
+
 	cli.ConfigureService(serviceConfigurator)
 }
 
@@ -70,7 +72,7 @@ func createRedisClient() *redis.Client {
 func redisHealthCheck(client *redis.Client) error {
 	pong, err := client.Ping(context.Background()).Result()
 	if err != nil {
-		err := fmt.Errorf(fmt.Sprintf("redis connect ping failed, err:%s", err.Error()))
+		err := fmt.Errorf("redis connect ping failed, err:%s", err.Error())
 		return err
 	}
 	log.Logger.Info("redis connect ping response:", zap.String("pong", pong))
