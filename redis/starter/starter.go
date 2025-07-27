@@ -45,7 +45,7 @@ func initRedis() *redis.Client {
 		if err == nil {
 			break
 		}
-		log.Logger.Error(err.Error() + ",sleep 5 seconds...")
+		log.Logger.Warn(fmt.Sprintf("%s,5秒后重试...", err.Error()))
 		time.Sleep(5 * time.Second)
 	}
 	app.Context.RegistInstance(client)
